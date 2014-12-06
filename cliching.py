@@ -3,7 +3,6 @@
 # An attempt to make I-Ching accessible from command line
 #
 #
-#
 
 import pydoc
 import random 
@@ -11,15 +10,14 @@ from time import sleep
 
 iching_A = 0
 iching_B = 0
-mutatis = False
+mutatis = False # variable that activates the mutation process
 
+class Line(object): # it starts the program, intro and choose the line of the hexagram
 
-class Line(object): 
-
-    def intro(x):
+    def intro(self):
 
         print "\n"
-        print bcolors.OKBLUE + "CliChing by roberto dell'orco 2014" + bcolors.ENDC
+        print bcolors.PURPLE + "CliChing by roberto dell'orco 2014" + bcolors.ENDC
         print "I-Ching on command line"
         print "Richard Wilhelm traslation 1950"
         print "CliChing is distribuited under"
@@ -27,22 +25,15 @@ class Line(object):
         print "\n"
         Line().question()
 
-    def question(x):
-        print bcolors.WARNING + "Please, write your question: " + bcolors.ENDC
+    def question(self): # The question can be whatever, but not empty
+        print bcolors.YELLOW + "Please, write your question: " + bcolors.ENDC
         quest = raw_input('> ')
         if quest == '':
             Line().question()
         else:
            Line().exa()
 
-    def exa(x):
-        yin_yang = ['-   -', '-   -', '-   -', '-----', '-----', '-----', '- x -', '--o--'] # ratio should be 3/8+3/8+1/8+1/8
-        line1 = random.choice(yin_yang)
-        line2 = random.choice(yin_yang)
-        line3 = random.choice(yin_yang)
-        line4 = random.choice(yin_yang)
-        line5 = random.choice(yin_yang)
-        line6 = random.choice(yin_yang)
+    def exa(self): # I wonder if there is a better way of choosing ramndom lines, seems a bit rigid to me
         print "Here the exagram from I-Ching: "
         print "\n"
         print "Legend:"
@@ -50,18 +41,26 @@ class Line(object):
         print "young yang line  -----"
         print "old yin line     - x -"
         print "old yang line    --o--"
-        sleep(2) # it adds some waiting time
-        print '\n'
-        print bcolors.OKBLUE + '\t', line6 + bcolors.ENDC
-        print bcolors.OKBLUE + '\t', line5 + bcolors.ENDC
-        print bcolors.OKBLUE + '\t', line4 + bcolors.ENDC
-        print bcolors.OKBLUE + '\t', line3 + bcolors.ENDC
-        print bcolors.OKBLUE + '\t', line2 + bcolors.ENDC
-        print bcolors.OKBLUE + '\t', line1 + bcolors.ENDC
-        print '\n'
-
-        T = Trans(line1, line2, line3, line4, line5, line6)
-        T.binary()
+        sleep(1) # it adds some waiting time, suspence.
+        yin_yang = ['-   -', '-   -', '-   -', '-----', '-----', '-----', '- x -', '--o--'] # ratio 3/8+3/8+1/8+1/8
+        line1 = random.choice(yin_yang)
+        line2 = random.choice(yin_yang)
+        line3 = random.choice(yin_yang)
+        line4 = random.choice(yin_yang)
+        line5 = random.choice(yin_yang)
+        line6 = random.choice(yin_yang)
+        print '\n'             
+        print bcolors.BLUE + '6', '\t', line6 + bcolors.ENDC
+        print bcolors.BLUE + '5', '\t', line5 + bcolors.ENDC
+        print bcolors.BLUE + '4', '\t', line4 + bcolors.ENDC
+        print bcolors.BLUE + '3', '\t', line3 + bcolors.ENDC
+        print bcolors.BLUE + '2', '\t', line2 + bcolors.ENDC
+        print bcolors.BLUE + '1', '\t', line1 + bcolors.ENDC
+        sleep(1)               
+        print '\n'             
+                               
+        T = Trans(line1, line2 , line3, line4, line5, line6)
+        T.binary()             
 
 class Trans(object): # Translates the first hexagram in a binary number, I suppose is the same operation Leibniz did, when he first discovered binary numbers
     def __init__(self, line1, line2, line3, line4, line5, line6):
@@ -72,7 +71,7 @@ class Trans(object): # Translates the first hexagram in a binary number, I suppo
         self.line5 = line5
         self.line6 = line6
 
-    def binary(self):
+    def binary(self): # It could be improved adding a print statement for each line that transforms, something like if mutatis==True, for each line, if x or o print something
         bline1 = int(0) if self.line1 == '-   -' or self.line1 == '- x -' else int(1)
         bline2 = int(0) if self.line2 == '-   -' or self.line2 == '- x -' else int(1)
         bline3 = int(0) if self.line3 == '-   -' or self.line3 == '- x -' else int(1)
@@ -151,26 +150,27 @@ class Mutation(object): # It transform all mutating lines in their mutations
 
     def exa(self):
         print "\n"
+        raw_input('Press Enter to see the mutation')
         print "This is the mutation"
         #sleep(1)
         print '\n'
-        print bcolors.WARNING + '\t', self.line6 + bcolors.ENDC
-        print bcolors.WARNING + '\t', self.line5 + bcolors.ENDC
-        print bcolors.WARNING + '\t', self.line4 + bcolors.ENDC
-        print bcolors.WARNING + '\t', self.line3 + bcolors.ENDC
-        print bcolors.WARNING + '\t', self.line2 + bcolors.ENDC
-        print bcolors.WARNING + '\t', self.line1 + bcolors.ENDC
+        print bcolors.YELLOW + '6', '\t', self.line6 + bcolors.ENDC
+        print bcolors.YELLOW + '5', '\t', self.line5 + bcolors.ENDC
+        print bcolors.YELLOW + '4', '\t', self.line4 + bcolors.ENDC
+        print bcolors.YELLOW + '3', '\t', self.line3 + bcolors.ENDC
+        print bcolors.YELLOW + '2', '\t', self.line2 + bcolors.ENDC
+        print bcolors.YELLOW + '1', '\t', self.line1 + bcolors.ENDC
         print '\n'
 
         T = Trans(self.line1, self.line2, self.line3, self.line4, self.line5, self.line6)
         T.binary()
 
 class bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
+    PURPLE = '\033[95m'
+    BLUE = '\033[94m'
+    GREEN = '\033[92m'
+    YELLOW = '\033[93m'
+    RED = '\033[91m'
     ENDC = '\033[0m'
 
 class iching64(object): # Contains the dictionary of binary number and actual number of I-Ching.
