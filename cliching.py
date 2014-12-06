@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # CliChing by roberto dell'orco 2014
-# An attempt to make I-Ching accessible from command line
-#
+# I-Ching on command line
 #
 
 import pydoc
@@ -71,7 +70,7 @@ class Trans(object): # Translates the first hexagram in a binary number, I suppo
         self.line5 = line5
         self.line6 = line6
 
-    def binary(self): # It could be improved adding a print statement for each line that transforms, something like if mutatis==True, for each line, if x or o print something
+    def binary(self): # Can be improved with curses giving the printing order from bottom to top
         bline1 = int(0) if self.line1 == '-   -' or self.line1 == '- x -' else int(1)
         bline2 = int(0) if self.line2 == '-   -' or self.line2 == '- x -' else int(1)
         bline3 = int(0) if self.line3 == '-   -' or self.line3 == '- x -' else int(1)
@@ -92,12 +91,11 @@ class Trans(object): # Translates the first hexagram in a binary number, I suppo
             name = iching64.name[iching_A].decode('utf-8')
         print name
         print '----------------------------------'
-
         
         M = Mutation(self.line1, self.line2, self.line3, self.line4, self.line5, self.line6)
         return M.match()
 
-class Response(object):
+class Response(object): # It gives the response of one or two response (It could be added a different color for mutating lines)
     def wilhelm(self):
         global mutatis
         global iching_A
@@ -127,7 +125,7 @@ class Mutation(object): # It transform all mutating lines in their mutations
         self.line5 = line5
         self.line6 = line6
 
-    def match(self):
+    def match(self): # it matches the hexagram and its mutation 
         mline1 = '-   -' if self.line1 == '--o--' or self.line1 == '-   -' else '-----'
         mline2 = '-   -' if self.line2 == '--o--' or self.line2 == '-   -' else '-----'
         mline3 = '-   -' if self.line3 == '--o--' or self.line3 == '-   -' else '-----'
@@ -148,7 +146,7 @@ class Mutation(object): # It transform all mutating lines in their mutations
             R = Response()
             R.wilhelm()
 
-    def exa(self):
+    def exa(self): # prints mutation with a different color from first one
         print "\n"
         raw_input('Press Enter to see the mutation')
         print "This is the mutation"
@@ -165,7 +163,7 @@ class Mutation(object): # It transform all mutating lines in their mutations
         T = Trans(self.line1, self.line2, self.line3, self.line4, self.line5, self.line6)
         T.binary()
 
-class bcolors:
+class bcolors: # add COLOR to printed lines in terminal
     PURPLE = '\033[95m'
     BLUE = '\033[94m'
     GREEN = '\033[92m'
