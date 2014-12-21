@@ -23,7 +23,6 @@ mutatis = False             # Variable that activates the mutation process
 class Line(object):         # It starts the program, intro and choose the line of the hexagram
 
     def intro(self):
-
         print "\n"
         print bcolors.PURPLE + "CliChing by roberto dell'orco 2014" + bcolors.ENDC
         print "I-Ching on command line"
