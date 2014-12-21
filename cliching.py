@@ -1,3 +1,4 @@
+#!/usr/bin/env/python2
 # -*- coding: utf-8 -*-
 # CliChing by roberto dell'orco 2014
 # I-Ching on command line
@@ -11,9 +12,13 @@ from time import sleep
 
 from iching64 import *
 
+
 iching_A = 0
+
 iching_B = 0
+
 mutatis = False             # Variable that activates the mutation process
+
 
 class Line(object):         # It starts the program, intro and choose the line of the hexagram
 
@@ -66,7 +71,6 @@ class Line(object):         # It starts the program, intro and choose the line o
         T.binary()             
 
 
-
 class bcolors:              # add COLOR to printed lines in terminal
     PURPLE = '\033[95m'
     BLUE = '\033[94m'
@@ -75,7 +79,9 @@ class bcolors:              # add COLOR to printed lines in terminal
     RED = '\033[91m'
     ENDC = '\033[0m'
 
+
 class Trans(object):        # Translates the first hexagram in a binary number, I suppose is the same operation Leibniz did, when he first discovered binary numbers
+
     def __init__(self, line1, line2, line3, line4, line5, line6):
         self.line1 = line1
         self.line2 = line2
@@ -109,7 +115,9 @@ class Trans(object):        # Translates the first hexagram in a binary number, 
         M = Mutation(self.line1, self.line2, self.line3, self.line4, self.line5, self.line6)
         return M.match()
 
+
 class Mutation(object):     # It transform all mutating lines in their mutations
+
     def __init__(self, line1, line2, line3, line4, line5, line6):
         self.line1 = line1 
         self.line2 = line2
@@ -156,7 +164,9 @@ class Mutation(object):     # It transform all mutating lines in their mutations
         T = Trans(self.line1, self.line2, self.line3, self.line4, self.line5, self.line6)
         T.binary()
 
+
 class Response(object):     # It gives the response of one or two response (It could be added a different color for mutating lines)
+
     def wilhelm(self):
         global mutatis
         global iching_A
