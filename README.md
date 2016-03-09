@@ -1,6 +1,6 @@
 CliChing
 ========
-###I-Ching for command line
+**I-Ching for command line**
 
 #Introduction 
 I-Ching is a chinese book of wisdom, almost 3000 years old, used as well as an oracle.
@@ -11,5 +11,5 @@ in itself all possible stories and human situations.
 #How to use CliChing
 Cliching is a program that ask you for a question and randomly select an hexagram line by line.
 It is a python2.x program, it doesn't require any dependancy and it must be exeuted by command line
-  python cliching.py
+  'python cliching.py'
 
