@@ -10,7 +10,10 @@ in itself all possible stories and human situations.
 
 #How to use CliChing
 Cliching is a program that ask you for a question and randomly select an hexagram line by line.
+Clichin will draw the resulting hexagram and printing the description and lines description in the translation of Richard Wilhelm  
 It is a python2.x program, it doesn't require any dependancy and it must be exeuted by command line
   
-  'python cliching.py'
+`python cliching.py`
+
+
 
