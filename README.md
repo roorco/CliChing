@@ -18,9 +18,9 @@ It is a python2.x program, it doesn't require any dependancy and it must be exeu
 `python cliching.py`
 
 #Further developments
--There are several translations of I-Ching chinese text.
+- There are several translations of I-Ching chinese text.
 In the present version of this software I have used Richard Wilhelm's translation.
 It is the one that I'm used to, I'm studying Alfred Huang version now, I will probably implement it in the future.
--I would like to add the possibility to browse all hexagrams instead of jumping directly to asking a question.
--Creating a conclusive file with the question and response for each consultation.
+- I would like to add the possibility to browse all hexagrams instead of jumping directly to asking a question.
+- Creating a conclusive file with the question and response for each consultation.
 
