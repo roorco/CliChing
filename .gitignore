@@ -1,0 +1,4 @@
+# ignore cache and old version
+__pycache__
+cliching.py.py2
+
